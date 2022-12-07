@@ -1,40 +1,37 @@
 ﻿#include <stdio.h>
 #include <stdlib.h>
 #define SIZE 20
-
-int recursiveMaximum(int size);
+int recursiveMaximum(int data[],int size);
 int x;
+int max, i;
 
 int main(void)
 {
 	int i;
+	int a[SIZE];
 	printf("Input size <20\n");
 	scanf("%d", &x);
-
-	printf("max is %d\n", recursiveMaximum(x));
+	for (int i = 0; i < x; i++)
+	{
+		scanf("%d", &a[i]);
+	}
+	printf("max is %d\n", recursiveMaximum(a,x));
 
 	system("pause");
 	return 0;
 }
 
-int recursiveMaximum(int size)
-{
-	int i;
-	int a[SIZE];
-
-	for (i = 0; i < x; i++)
-	{
-		scanf("%d", &a[i]);
+int recursiveMaximum(int data[],int size)
+{	
+	if (i == size)
+		return max;
+	if (max<data[i]) {
+		max = data[i];
+		i++;
+		recursiveMaximum(data, size);
 	}
-	int max = a[x - 1];
-	for (i = 0; i < x; i++)
-	{
-		if (a[i] > a[x - 1])
-		{
-			max = a[i];
-			a[i] = a[x - 1];
-			a[x - 1] = max;
-		}
+	else {
+		i++;
+		recursiveMaximum(data, size);
 	}
-	return max;
 }
